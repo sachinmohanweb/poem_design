@@ -1,0 +1,279 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+
+<!-- Mirrored from themes.suelo.pl/?theme=Jestem by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Mar 2024 09:30:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="robots" content="noindex, follow" />
+    	<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1" />
+        <title>Jestem - Elegant &amp; Minimal Personal Resume vCard Theme</title>
+		
+		<!-- Google Web Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css'>
+        <link href="selector/css/styles.css" rel="stylesheet" media="all" />
+        <link href="selector/css/base.css" rel="stylesheet" media="all" />
+        <script type="text/javascript" src="selector/js/jquery-1.10.2.min.js"></script>
+       
+        <script type="text/javascript">
+        
+        var theme_list_open = false;
+
+        var $items = $("#items");
+
+        var mobile = [375,627];
+	    var tablet = [768,1024];
+
+        var showItems = function() {
+
+        	$("#items").show(0, function(){
+				$('body').addClass('items-open');
+			});
+			$(this).addClass('active');      	
+
+			theme_list_open = true;
+
+        }
+
+        var hideItems = function() {
+
+        	$('body').removeClass('items-open');
+			$("#items").delay(800).hide(0);
+			$(this).removeClass('active');      		
+
+			theme_list_open = false;
+
+        }
+
+        var updateStyle = function(id,style) {
+        	$('body').attr('data-id',id);
+        	$('body').attr('data-style',style);
+        }
+        
+        $(document).ready(function () {
+        
+        	function fixHeight () {
+        		var headerHeight = $("#switcher").height(); 	
+        		$("#iframe").attr("height", ($(window).height() - headerHeight) + 'px');
+        	}
+        	
+        	$(window).resize(function () {
+        		fixHeight();
+        	}).resize();
+        	
+        	$("#item-title").click( function () {
+
+        		console.log(theme_list_open);
+        	
+        		if (theme_list_open == true) {
+        			hideItems();
+        		} else {
+					showItems();
+        		}
+        		
+        		return false;
+        	
+        	});
+        	
+        	$("#items ul li a").click(function () {
+        	
+	        	var theme_data = $(this).attr("rel").split(",");
+	        	        	
+	        	$("li.purchase a").attr("href", theme_data[1]);
+	        	$("li.remove_frame a").attr("href", theme_data[0]);
+	        	$("#iframe").attr("src", theme_data[0]);
+	        	
+	        	$("#item-title .title").text($(this).data('title'));
+				$("#item-title .caption").text($(this).data('caption'));
+	        	
+	        	hideItems();
+				$("#item-title").removeClass('active');
+
+				updateStyle($(this).data('id'),$(this).data('style'));
+	        	
+	        	theme_list_open = false;
+	        	
+	        	return false;
+        	
+        	});
+
+        	$('#responsive-switcher li a').click(function() {
+        	
+	        	var mobile = [375,627];
+	        	var tablet = [768,1024];
+	        	var device = $(this).data('device');
+	        	var $active = $(this).parents('ul').find('a.active');
+	        	var x = $(this).data('x');
+	        	var y = $(this).data('y');
+
+	        	function resizeFrame(x,y) {
+	        		$('#iframe').css({
+	        			'width': x + 'px',
+	        			'height': y + 'px'
+	        		});
+	        	}
+
+	        	if($active.data('device')==device && device!='desktop') {
+	        		if($active.hasClass('horizontal')) {
+		        		resizeFrame(x,y);
+	        			$active.removeClass('horizontal');
+		        	} else {
+		        		$active.addClass('horizontal');
+		        		resizeFrame(y,x);
+		        	}
+	        	} else if(device == 'desktop') {
+	        		$('#iframe').animate({
+	        			'width': '100%',
+	        			'height': $(window).height()-$('#switcher').height() + 'px'
+	        		});
+	        		$('body').removeClass('mobile-device');
+	        		$active.removeClass('horizontal');
+	        	} else {
+	        		$active.removeClass('horizontal');
+	        		resizeFrame(x,y);
+	        		$('body').addClass('mobile-device');
+	        	}
+
+	        	$active.removeClass('active');
+	        	$(this).addClass('active');
+        	
+        	});
+        
+        });
+        
+        </script>
+         
+</head>
+
+<body  data-id="Jestem" data-style="light" >
+
+	<div id="switcher">
+    
+    	<!-- Logo -->
+    	<a href="http://www.suelo.pl/" target="_blank" class="frame-logo"><span class="logo"></span></a>
+		
+		<!-- Title -->
+		<a id="item-title" href="#">
+			<span class="title">Jestem</span> - 
+			<span class="caption">Elegant &amp; Minimal Personal Resume vCard Theme</span>
+			<span class="icon"><i class="ti-menu"></i></span>
+		</a>
+
+		<!-- Close -->
+		<a id="close-switcher" href="jestem/intro/index.html"><i class="ti-close"></i></a>
+
+		<!-- Buy -->
+		<a class="btn btn-purchase" href="http://themeforest.net/item/jestem-elegant-minimal-resume-vcard-item-/10846042?ref=suelo" target="_blank">Buy now!</a>
+
+		<!-- Responsive Switcher -->
+		<ul id="responsive-switcher">
+			<li><a href="#" class="mobile" data-device="mobile" data-x="375" data-y="627"><i class="flaticon-smartphone24"></i></a></li>
+			<li><a href="#" class="tablet" data-device="tablet" data-x="728" data-y="1024"><i class="flaticon-ipad36"></i></a></li>
+			<li><a href="#" class="active desktop" data-device="desktop"><i class="flaticon-laptop118"></i></a></li>
+		</ul>
+		
+	</div>
+
+	<div id="items">
+
+		<div class="items-wrapper">
+	
+			<ul>
+				
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/mi/,http://themeforest.net/item/player-creative-multipurpose-html5-template/12987848?ref=suelo" data-title="Mi." data-caption="Ultimate Personal Resume vCard Template" data-id="Mi" data-style="dark">
+						<div class="item-preview"><img src="selector/img/mi.jpg" alt="Mi" /><div>
+						
+						<span class="item-title">Mi.</span>
+						<span class="item-caption"> - Ultimate Personal Resume vCard Template</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/player/,http://themeforest.net/item/player-creative-multipurpose-html5-template/12987848?ref=suelo" data-title="Player" data-caption="Creative Multipurpose HTML5 Template" data-id="Player" data-style="dark">
+						<div class="item-preview"><img src="selector/img/player.jpg" alt="Player" /><div>
+						
+						<span class="item-title">Player</span>
+						<span class="item-caption"> - Creative Multipurpose HTML5 Template</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/kwadrat/welcome.html,http://themeforest.net/item/kwadrat-creative-multipurpose-bootstrap-template/12296600?ref=suelo" data-title="Kwadrat" data-caption="Creative Multipurpose Bootstrap Template" data-id="Kwadrat" data-style="dark">
+						<div class="item-preview"><img src="selector/img/kwadrat.jpg" alt="Kwadrat" /><div>
+						
+						<span class="item-title">Kwadrat</span>
+						<span class="item-caption"> - Creative Multipurpose Bootstrap Template</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/jestem/intro,http://themeforest.net/item/jestem-elegant-minimal-resume-vcard-item-/10846042?ref=suelo" data-title="Jestem" data-caption="Elegant &amp; Minimal Personal Resume vCard Theme" data-id="Jestem" data-style="light">
+						<div class="item-preview"><img src="selector/img/jestem.jpg" alt="Jestem" /><div>
+						
+						<span class="item-title">Jestem</span>
+						<span class="item-caption"> - Elegant &amp; Minimal Personal Resume vCard Theme</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/trener/,http://themeforest.net/item/trener-multipurpose-coaching-training-theme/10006315?ref=suelo" data-title="Trener" data-caption="Multipurpose Coaching & Training HTML/CSS Theme" data-id="Trener" data-style="light">
+						<div class="item-preview"><img src="selector/img/trener.jpg" alt="Trener" /><div>
+						
+						<span class="item-title">Trener</span>
+						<span class="item-caption"> - Multipurpose Coaching & Training HTML/CSS Theme</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/moje/intro/,http://themeforest.net/item/moje-responsive-bootstrap-vcard-htmlcss-theme/7800423?ref=suelo" data-title="Moje" data-caption="Presonal One Page Resume vCard Theme" data-id="Moje" data-style="dark">
+						<div class="item-preview"><img src="selector/img/moje.jpg" alt="Moje" /><div>
+						
+						<span class="item-title">Moje</span>
+						<span class="item-caption"> - Presonal One Page Resume vCard Theme</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/cured/,http://themeforest.net/item/cured-bootstrap-one-page-htmlcss-template/6612202?ref=suelo" data-title="Cured" data-caption="Medical One Page Bootstrap Theme " data-id="Cured" data-style="light">
+						<div class="item-preview"><img src="selector/img/cured.jpg" alt="Cured" /><div>
+						
+						<span class="item-title">Cured</span>
+						<span class="item-caption"> - Medical One Page Bootstrap Theme </span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/qola/,http://themeforest.net/item/qola-responsive-one-page-template/5690198?ref=suelo" data-title="Qola" data-caption="Responsive Multipurpose One Page Template" data-id="Qola" data-style="dark">
+						<div class="item-preview"><img src="selector/img/qola.jpg" alt="Qola" /><div>
+						
+						<span class="item-title">Qola</span>
+						<span class="item-caption"> - Responsive Multipurpose One Page Template</span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/weve/,http://themeforest.net/item/weve-responsive-metro-style-htmlcss-template/5375047?ref=suelo" data-title="Weve" data-caption="Responsive Metro Style HTML/CSS Template " data-id="Weve" data-style="light">
+						<div class="item-preview"><img src="selector/img/weve.jpg" alt="Weve" /><div>
+						
+						<span class="item-title">Weve</span>
+						<span class="item-caption"> - Responsive Metro Style HTML/CSS Template </span>
+					</a>
+				</li>
+				<li>
+					<a href="#" rel="http://themes.suelo.pl/bigboom/,http://themeforest.net/item/bigboom-clean-powerful-htmlcss-template/4895174?ref=suelo" data-title="Big Boom" data-caption="Clean & Powerful HTML/CSS Template" data-id="Big Boom" data-style="dark">
+						<div class="item-preview"><img src="selector/img/bigboom.jpg" alt="Big Boom" /><div>
+						
+						<span class="item-title">Big Boom</span>
+						<span class="item-caption"> - Clean & Powerful HTML/CSS Template</span>
+					</a>
+				</li>			</ul>
+
+		</div>
+
+	</div>
+	
+	
+    <iframe id="iframe" src="jestem/intro/index.html"></iframe>
+    
+</body>
+
+
+<!-- Mirrored from themes.suelo.pl/?theme=Jestem by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Mar 2024 09:30:17 GMT -->
+</html>
+
